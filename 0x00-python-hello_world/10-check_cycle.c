@@ -1,6 +1,6 @@
 #include "lists.h"
-#include <stdlib.c>
-#include <stdio.c>
+#include <stdlib.h>
+#include <stdio.h>
 /**
  * check_cycle - check_cycle
  * @list: pointer
