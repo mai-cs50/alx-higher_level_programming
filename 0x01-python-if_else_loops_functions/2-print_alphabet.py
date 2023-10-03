@@ -2,4 +2,4 @@
 ch = 97
 for ch in range (97, 123):
     print("{:c}".format(ch), end="")
-    ch +=1
+    ch += 1
