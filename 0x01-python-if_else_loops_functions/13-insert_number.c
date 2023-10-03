@@ -2,12 +2,10 @@
 #include <stdlib.h>
 
 /**
- *
- *
- *
- *
- *
- *
+ * insert_node - insert_node
+ * @head: pointer
+ * @number: int
+ * Return: NULL
 */
 listint_t *insert_node(listint_t **head, int number)
 {
