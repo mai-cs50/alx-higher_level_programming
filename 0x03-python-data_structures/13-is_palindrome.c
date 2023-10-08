@@ -1,10 +1,8 @@
 #include "lists.h"
-/***
- *
- *
- *
- *
- *
+/**
+ * is_palindrome - palindrome
+ * @head: head list
+ * Return: 0 or 1
 */
 int is_palindrome(listint_t **head)
 {
@@ -12,14 +10,11 @@ int is_palindrome(listint_t **head)
 		return (1);
 	return (aux_palind(head, *head));
 }
-/***
- *
- *
- *
- *
- *
- *
- *
+/**
+ * aux_palind - aux_palind
+ * @head: head list
+ * @end: end list
+ * Return: 1
 */
 int aux_palind(listint_t **head, listint_t *end)
 {
