@@ -1,0 +1,55 @@
+the ``say_my_name`` module
+===========================
+using ``say_my_name`` module
+-----------------------------
+
+import module:
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+test basic:
+	>>> say_my_name("hello", "there")
+	My name is hello threre
+
+test first name:
+	>>> say_my_name("hello")
+	My name is hello
+
+test last name empty:
+	>>> say_my_name("hello", "")
+	My name is hello
+
+test both names empty:
+	>>> say_my_name("", "")
+	My name is
+
+test spaces:
+	>>> say_my_name("  ", "  ")
+	My name is     
+
+tast empty first name:
+	>>> say_my_name("", "there")
+	My name is there
+
+test no string arg1:
+	>>> say_my_name(55, "hello")
+	Traceback (most recent call test)
+	...
+	TypeError: first name must be string
+
+test no string arg2:
+	>>> say_my_name("hello", 58)
+	Traceback (most recent call test)
+	...
+	TypeError: last_name must be string
+
+test no string arg1 arg2:
+	>>> say_my_name(98, 54)
+	Traceback (most recent call tast)
+	...
+	TypeError: first name must be string
+
+tast missing 2 args:
+	>>> say_my_name()
+	Traceback (most recent call tast)
+	...
+	TypeError: say_my_name() missing one required positional argument: 'first name'
