@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-'''afddsfdsfd adfsasdf'''
+"""
+Write an empty class Rectangle that defines a rectangle
+"""
 
 class Rectangle:
-    '''dfsdf dafd adf'''
+    """empty rectangle"""
     pass
