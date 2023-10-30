@@ -38,4 +38,4 @@ class Rectangle:
 
         if width < 0:
             raise ValueError("height must be >= 0")
-        self.__width = value
+        self.__height = value
