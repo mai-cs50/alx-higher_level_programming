@@ -4,6 +4,9 @@ Write a class Rectangle that defines a rectangle by: (based on 0-rectangle.py)
 """
 class Rectangle:
     """width, hight"""
+
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         """intialise rectangle"""
         self.width = width
