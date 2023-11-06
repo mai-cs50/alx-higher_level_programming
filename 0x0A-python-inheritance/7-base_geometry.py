@@ -13,6 +13,6 @@ class BaseGeometry:
         if type(value) != int:
             raise TypeError("{} name must be an integer".format(name))
         if value <= 0:
-            raisse ValueError("{} age must be greater than 0".format(name))
+            raise ValueError("{} age must be greater than 0".format(name))
 
 
