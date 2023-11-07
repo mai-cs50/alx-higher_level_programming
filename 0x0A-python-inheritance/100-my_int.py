@@ -4,9 +4,9 @@
 
 class MyInt(int):
     ''' '''
-    def __new__(cls, *arg, **kwargs):
+    def __new__(cls, *args, **kwargs):
         ''' '''
-        return super(MyInt, cls).__new__(cls, *arg, **kwargs)
+        return super(MyInt, cls).__new__(cls, *args, **kwargs)
 
     def __eq__(self, other):
         ''' '''
