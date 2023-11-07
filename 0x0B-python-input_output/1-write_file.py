@@ -2,7 +2,7 @@
 '''Write a function that appends a string at the end of a text file'''
 
 
-def append_write(filename="", text=""):
+def write_file(filename="", text=""):
     '''read file name with utf-8'''
     with open(filename, "w", encoding="utf-8") as f:
         return f.write(text)
