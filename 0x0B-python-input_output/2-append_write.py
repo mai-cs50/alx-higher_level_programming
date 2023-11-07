@@ -1,0 +1,8 @@
+#!/usr/bin/python3
+'''Write a function that appends a string at the end of a text file'''
+
+
+def append_file(filename="", text=""):
+    '''read file name with utf-8'''
+    with open(filename, "a", encoding="utf-8") as f:
+        return f.write(text)
