@@ -68,3 +68,29 @@ class Rectangle(Base):
             '''prints in stdout the Rectangle instance with the character #'''
             s = '\n' * self.y + (' ' * self.x + '#' * self.width + '\n') * self.height
             print(s, end="")
+
+        def __str__(self):
+            '''return str info of rectangle'''
+            return'[{}] ({}) {}/{} - {}/{}'.format(type(self).\
+                    __name__, self.id, self.x, self.y, self.width, self.height))
+
+        def update(self, id=None, width=None, height=None, x=None, y=None):
+            '''update instance attr'''
+            if id is not None:
+                self.id = id
+            if width is not None:
+                self.width = width
+            if height is not None:
+                self.height = height
+            if x is not None:
+                self.x = x
+            if y is not None:
+                self.y = y
+
+        def update(self, *args, **kwargs):
+            '''update via no-keyword'''
+            if args:
+                self.__update(*args)
+            elif kwargs:
+                self.__update(**kwargs)
+
