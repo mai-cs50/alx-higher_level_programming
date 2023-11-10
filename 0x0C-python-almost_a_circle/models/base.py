@@ -2,7 +2,7 @@
 '''module for base class'''
 
 
-class base:
+class Base:
     ''' manage id attribute in all your future classes'''
 
 
@@ -13,5 +13,5 @@ class base:
         if id is not None:
             self.id = id
         else:
-            base.__nb_objects += 1
-            self.id = base.__nb_objects
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
