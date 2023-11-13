@@ -26,7 +26,7 @@ class Base:
         else:
             return dumps(list_dictionaries)
 
-    @staticmethid
+    @staticmethod
     def from_json_string(json_string):
         '''unjsonfiles dictionary'''
         if json_string is None or not json_string:
