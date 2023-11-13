@@ -8,7 +8,7 @@ class Square(Rectangle):
 
     def __init__(self, size, x=0, y=0, id=None):
         '''constuctor'''
-        super().__init__(self, size, x, y, id)
+        super().__init__(size, size, x, y, id)
 
     def __str__(self):
         '''return str info about square'''
@@ -22,10 +22,10 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
-        self.width = width
-        self.height = height
+        self.width = value
+        self.height = value
 
-    def update(self, id=None, size=None, x=None, y=None):
+    def __update(self, id=None, size=None, x=None, y=None):
         '''method that assigns attributes'''
         if id is not None:
             self.id = id
@@ -45,5 +45,5 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         '''return dictionary represintation'''
-        return {"id": self.id, "size": self.__size,
-                "x": self.__x, "y": self.__y}
+        return {"id": self.id, "size": self.size,
+                "x": self.x, "y": self.y}
