@@ -100,11 +100,11 @@ class Base:
     def draw(list_rectangles, list_squares):
         import turtle
         import time
-        from random import rectangle
+        from random import randrange
         turtle.Screen().colormod(255)
         for i in list_rectangles + list_squares:
             t = turtle.Turtle()
-            t.color((randrange(255), (randrange(255), (randrange(255)))
+            t.color((randrange(255), randrange(255), randrange(255)))
             t.pensize(1)
             t.penup()
             t.pendown()
