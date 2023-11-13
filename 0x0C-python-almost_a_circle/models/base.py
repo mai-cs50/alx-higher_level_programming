@@ -38,7 +38,7 @@ class Base:
         '''save json obj'''
         if list_objs is not None:
             list_objs = [o.to_dictionary() for o in list_objs]
-        with open("{}.json".format(cls.__name__), "w", encoding="utf-8")as f:
+        with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
             f.write(cls.to_json_string(list_objs))
 
     @classmethod
@@ -63,7 +63,7 @@ class Base:
         if not path.isfile(file):
             return []
         with open(file, "r", encoding="utf-8") as f:
-            return [cls.creat(**d) for d in cls.from_json_string(f.read())]
+            return [cls.create(**d) for d in cls.from_json_string(f.read())]
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -75,10 +75,47 @@ class Base:
                 list_objs = [[o.id, o.width, o.height, o.x, o.y]for o in list_objs]
             else:
                 list_objs = [[o.id, o.size, o.x, o.y]for o in list_objs]
-        with open ('{}.csv'.format(cls.__name__), 'w', newline='', encoding='utf-8')as f:
+        with open ('{}.csv'.format(cls.__name__), 'w', newline='', encoding='utf-8') as f:
                     writer = csv.writer(f)
                     writer.writerows(list_objs)
 
     @classmethod
     def load_from_file_csv(cls):
-        ''''''
+        '''loads obj to csv files'''
+        from models.rectangle import Rectangle
+        from models.square import Square
+        ret = []
+        with open('{}.csv'.format(cls.__name__), 'r', newline='', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                row = [int(r) for r in row]
+                if cls is Rectangle:
+                    d = {"id": row[0], "width": row[1], "height": row[2], "x": rowp[3], "y": row[4]}
+                else:
+                    d = {"id": row[0], "size": row[1], "x": row[2], "y": row[3]}
+                ret.append(cls.creat(**d))
+        return ret
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        import turtle
+        import time
+        from rasndom import rectangle
+        turtle.Screen().colormod(255)
+        for i in list_rectangles + list_squares:
+            t = turtle.Turtle()
+            t.color((randrange(255), (randrange(255), (randrange(255)))
+            t.pensize(1)
+            t.penup()
+            t.pendown()
+            t.setpos((i.x + t.pos()[0], i.y - t.pos()[1]))
+            t.pensize(10)
+            t.forward(i.width)
+            t.lift(90)
+            t.forward(i.height)
+            t.lift(90)
+            t.forward(i.width)
+            t.lift(90)
+            t.forward(i.height)
+            t.lift(90)
+            t.end_fill()
