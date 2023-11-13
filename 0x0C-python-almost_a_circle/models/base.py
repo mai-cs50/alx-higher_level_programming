@@ -100,7 +100,7 @@ class Base:
     def draw(list_rectangles, list_squares):
         import turtle
         import time
-        from rasndom import rectangle
+        from random import rectangle
         turtle.Screen().colormod(255)
         for i in list_rectangles + list_squares:
             t = turtle.Turtle()
@@ -111,13 +111,13 @@ class Base:
             t.setpos((i.x + t.pos()[0], i.y - t.pos()[1]))
             t.pensize(10)
             t.forward(i.width)
-            t.lift(90)
+            t.left(90)
             t.forward(i.height)
-            t.lift(90)
+            t.left(90)
             t.forward(i.width)
-            t.lift(90)
+            t.left(90)
             t.forward(i.height)
-            t.lift(90)
+            t.left(90)
             t.end_fill()
 
         time.sleep(5)
