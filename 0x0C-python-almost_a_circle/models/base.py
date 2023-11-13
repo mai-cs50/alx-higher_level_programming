@@ -119,3 +119,5 @@ class Base:
             t.forward(i.height)
             t.lift(90)
             t.end_fill()
+
+        time.sleep(5)
