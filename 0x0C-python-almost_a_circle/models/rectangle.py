@@ -28,10 +28,11 @@ class Rectangle(Base):
     @property
     def height(self):
         '''rectangle height'''
-        retur self.__height
+        return self.__height
 
     @height.setter
     def height(self, value):
+        self.validate_integer("height", value, False)
         self.__height = value
 
     @property
