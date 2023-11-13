@@ -22,6 +22,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
+        self.validate_integer("width", value, False)
         self.__width = value
 
     @property
