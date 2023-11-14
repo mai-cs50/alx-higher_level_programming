@@ -7,7 +7,6 @@ import csv
 class Base:
     ''' manage id attribute in all your future classes'''
 
-
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -45,7 +44,7 @@ class Base:
     def create(cls, **dictionary):
         '''loads instance from dictionary'''
         from models.rectangle import Rectangle
-        from models.square import Square 
+        from models.square import Square
         if cls is Rectangle:
             new = Rectangle(1, 1)
         elif cls is Square:
@@ -72,12 +71,14 @@ class Base:
         from models.square import Square
         if list_objs is not None:
             if cls is Rectangle:
-                list_objs = [[o.id, o.width, o.height, o.x, o.y]for o in list_objs]
+                list_objs = [[o.id, o.width, o.height, o.x, o.y]
+                        for o in list_objs]
             else:
                 list_objs = [[o.id, o.size, o.x, o.y]for o in list_objs]
-        with open ('{}.csv'.format(cls.__name__), 'w', newline='', encoding='utf-8') as f:
-                    writer = csv.writer(f)
-                    writer.writerows(list_objs)
+        with open('{}.csv'.format(cls.__name__), 'w', newline='',
+                encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerows(list_objs)
 
     @classmethod
     def load_from_file_csv(cls):
@@ -85,14 +86,17 @@ class Base:
         from models.rectangle import Rectangle
         from models.square import Square
         ret = []
-        with open('{}.csv'.format(cls.__name__), 'r', newline='', encoding='utf-8') as f:
+        with open('{}.csv'.format(cls.__name__), 'r', newline='',
+                encoding='utf-8') as f:
             reader = csv.reader(f)
             for row in reader:
                 row = [int(r) for r in row]
                 if cls is Rectangle:
-                    d = {"id": row[0], "width": row[1], "height": row[2], "x": rowp[3], "y": row[4]}
+                    d = {"id": row[0], "width": row[1], "height": row[2],
+                            "x": rowp[3], "y": row[4]}
                 else:
-                    d = {"id": row[0], "size": row[1], "x": row[2], "y": row[3]}
+                    d = {"id": row[0], "size": row[1],
+                            "x": row[2], "y": row[3]}
                 ret.append(cls.creat(**d))
         return ret
 
