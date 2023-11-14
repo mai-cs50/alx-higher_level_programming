@@ -94,7 +94,7 @@ class Base:
                 row = [int(r) for r in row]
                 if cls is Rectangle:
                     d = {"id": row[0], "width": row[1], "height": row[2],
-                         "x": rowp[3], "y": row[4]}
+                         "x": row[3], "y": row[4]}
                 else:
                     d = {"id": row[0], "size": row[1],
                          "x": row[2], "y": row[3]}
