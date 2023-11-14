@@ -79,7 +79,7 @@ class Rectangle(Base):
             format(type(self).__name__,self.id, self.x, self.y, self.width,
                    self.height)
 
-    def update(self, id=None, width=None, height=None, x=None, y=None):
+    def __update(self, id=None, width=None, height=None, x=None, y=None):
         '''update instance attr'''
         if id is not None:
             self.id = id
