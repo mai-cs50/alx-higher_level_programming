@@ -1,2 +1,4 @@
 #!/usr/bin/node
-exports.list = [1, 2, 3, 4, 5]
+const { list } = require(`./100-data.js`)
+console.log(list);
+console.log(list.map((element, idx) => element * idx));
