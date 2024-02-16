@@ -12,8 +12,8 @@ if __name__ = "__main__":
                          passwd=argv[2], db=argv[3])
 
     #give
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
     #query_rows = cur.fetchall()
     for states in cursor.fetchall():
