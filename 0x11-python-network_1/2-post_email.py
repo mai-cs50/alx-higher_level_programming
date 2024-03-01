@@ -2,7 +2,7 @@
 import urllib.request
 import urllib.parse
 from urllib.request import Request, urlopen
-from urllib.parse import utlencode
+from urllib.parse import urlencode
 from sys import argv
 
 
