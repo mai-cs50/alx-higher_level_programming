@@ -4,6 +4,8 @@ import sys
 
 
 if __name__ == "__main__":
-    url = sys.argv[1]
-    with urllib.request.urlopen(url) as response:
-        print(response.getheader('X-Request-Id'))
+    url = argv[1]
+    req = Request(url)
+
+    with urlopen(req) as response:
+        print(dict(response.headers).get('X-Request-Id'))
