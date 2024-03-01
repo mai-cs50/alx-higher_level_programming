@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 import urllib.request
 import urllib.parse
-import sys
+from urllib.request import Request, urlopen
+from urllib.parse import utlencode
+from sys import argv
 
 
 if __name__ == "__main__":
     url = argv[1]
     value = {"email": argv[2]}
     data = urlencode(value).encode("ascii")
-    req = Request(url, data)
+    req = Request(url, data=data)
 
     with urlopen(req) as response:
-        print(response.read().decode("utf-8", "replace"))
+        print(response.read().decode("utf-8"))
