@@ -4,7 +4,7 @@ import MySQLdb
 from sys import argv
 
 # the code
-if __name__ = "__main__":
+if __name__ == "__main__":
     if len(argv) == 5:
         username, password, database, state_name = argv[1], argv[2], argv[3], argv[4]
 
