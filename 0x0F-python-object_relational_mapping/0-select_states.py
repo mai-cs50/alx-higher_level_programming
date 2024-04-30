@@ -26,4 +26,3 @@ for row in rows:
 
 cur.close()
 db.close()
-
