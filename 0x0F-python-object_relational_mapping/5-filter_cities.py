@@ -20,11 +20,11 @@ if __name__=="__main__":
             ORDER BY cities.id ASC"
 
     cursor.execute(query, (argv[4], ))
-    cities = []
 
-    for city in cursor.fetchall():
-        cities.append(city[0])
-        print(", ".join(cities))
+    cities = [city[0] for city in cursor.fetchall()]
+
+
+    print(", ".join(cities))
 
     cursor.close()
     db.close()
