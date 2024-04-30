@@ -5,7 +5,7 @@ in the states table of hbtn_0e_0_usa where name matches the argument.
 But this time, write one that is safe from MySQL injections!
 '''
 
-import MySQLdb
+import sys
 from model_state import Base, State
 from SQLAlchemy import creat_engine
 from SQLAlchemy.orm import sessionmaker
