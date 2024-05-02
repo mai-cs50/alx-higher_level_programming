@@ -3,9 +3,9 @@
 
 const numbers = process.argv;
 
-if (numbers.length <= 3) {
+if (process.argv.length <= 3) {
   console.log(0);
 } else {
-  const list = numbers.sort()(( a + b ) => b - a);
-  console.log(list[1]);
+  const list = process.argv.sort()(( a + b ) => b - a);
+  console.log(list.reverse[1]);
 }
