@@ -3,7 +3,7 @@
 
 const numbers = process.argv;
 
-if (numbers.length <= 1) {
+if (numbers.length <= 3) {
   console.log(0);
 } else {
   const list = numbers.sort()(( a + b ) => b - a);
