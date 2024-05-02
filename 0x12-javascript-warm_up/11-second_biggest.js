@@ -1,7 +1,6 @@
 #!/usr/bin/node
 // script that searches the second biggest integer in the list of arguments.
 
-const numbers = process.argv;
 
 if (process.argv.length <= 3) {
   console.log(0);
