@@ -1,7 +1,7 @@
 #!/usr/bin/node
 // script that searches the second biggest integer in the list of arguments.
 
-const numbers = process.argv.slice(2).map(Number);
+const numbers = process.argv;
 
 if (numbers.length <= 1) {
   console.log(0);
