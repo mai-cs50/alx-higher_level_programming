@@ -11,9 +11,11 @@ from SQLAlchemy import creat_engine
 from SQLAlchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    engine = creat_engine(f'mysql+mysqldb://{argv[1]}:{argv[2]}@localhost/{argv[3]}',
+    #create_engine
+    engine = creat_engine(f'mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}',
                           pool_pre_ping=True)
     Base.metadata.creat_all(engine)
+    #creat
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(state).order_by(State.id).all()
