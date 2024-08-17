@@ -11,8 +11,8 @@ from sqlalchemy.orm import sessionmaker
 
 def main():
     if len(sys.argv) != 5:
-        print("Usage: ./10-model_state_my_get.py <mysql username> <mysql password>"
-              "<database name> <state name>")
+        print("Usage: ./10-model_state_my_get.py <mysql username>"
+              "<mysql password><database name> <state name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
