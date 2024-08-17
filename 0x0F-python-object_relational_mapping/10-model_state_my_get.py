@@ -8,10 +8,9 @@ from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-if __name__ == "__main__":
+def main():
     if len(sys.argv) != 5:
-        print("Usage: ./10-model_state_my_get.py <mysql username> "
-              "<mysql password> <database name> <state name>")
+        print("Usage: ./10-model_state_my_get.py <mysql username> <mysql password> <database name> <state name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
@@ -21,11 +20,23 @@ if __name__ == "__main__":
 
     # Create the engine and session
     engine = create_engine(
-        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/"
-        f"{database_name}",
+        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/{database_name}",
         pool_pre_ping=True
     )
     
     Base.metadata.create_all(engine)
-    Sess
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
+    # Query state by name
+    state = session.query(State).filter(State.name == state_name).first()
+    
+    if state:
+        print(state.id)
+    else:
+        print("Not found")
+
+    session.close()
+
+if __name__ == "__main__":
+    main()
