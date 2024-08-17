@@ -1,5 +1,13 @@
 #!/usr/bin/python3
+'''
+defines a square by: (based on 3-square.py)
+'''
+
+
 class Square:
+    '''
+    init
+    '''
     def __init__(self, size=0):
         self.size = size
     @property
