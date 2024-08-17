@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Script that lists all State objects from the database hbtn_0e_6_usa
+Script that lists all State objects from the database hbtn_0e_6_usa.
 '''
 
 import sys
@@ -11,10 +11,10 @@ from sqlalchemy.orm import sessionmaker
 if __name__ == "__main__":
     # Create the engine and connect to the database
     engine = create_engine(
-            f'mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost/'
-            '{sys.argv[3]}',
-            pool_pre_ping=True
-            )
+        f'mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@localhost/'
+        f'{sys.argv[3]}',
+        pool_pre_ping=True
+    )
 
     # Create the tables if they don't exist
     Base.metadata.create_all(engine)
