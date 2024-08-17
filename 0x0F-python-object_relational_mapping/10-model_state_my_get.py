@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
         print("Usage: ./10-model_state_my_get.py <mysql username> "
               "<mysql password> <database name> <state name>")
         sys.exit(1)
@@ -27,15 +27,5 @@ if __name__ == "__main__":
     )
     
     Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    Sess
 
-    # Query state by name
-    state = session.query(State).filter(State.name == state_name).first()
-    
-    if state:
-        print(state.id)
-    else:
-        print("Not found")
-
-    session.close()
