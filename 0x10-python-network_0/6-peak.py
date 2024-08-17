@@ -1,19 +1,23 @@
 #!/usr/bin/python3
-"""   """
+"""Defines a peak-finding algorithm."""
+
 
 def find_peak(list_of_integers):
-    """ """
-
-    list_ = list_of_integers
-    if list_ == []:
+    """Return a peak in a list of unsorted integers."""
+    if list_of_integers == []:
         return None
-    length = len(list_)
 
-    start, end = 0, length - 1
-    while start < end:
-        mid = (end + start) // 2
-        if list_[mid] > list_[mid + 1]:
-            end = mid
-        else:
-            start = mid + 1
-    return list_[start]
+    size = len(list_of_integers)
+    if size == 1:
+        return list_of_integers[0]
+    elif size == 2:
+        return max(list_of_integers)
+
+    mid = int(size / 2)
+    peak = list_of_integers[mid]
+    if peak > list_of_integers[mid - 1] and peak > list_of_integers[mid + 1]:
+        return peak
+    elif peak < list_of_integers[mid - 1]:
+        return find_peak(list_of_integers[:mid])
+    else:
+        return find_peak(list_of_integers[mid + 1:])
