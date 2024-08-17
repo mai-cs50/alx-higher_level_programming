@@ -10,15 +10,17 @@ from sys import argv
 # Create an instance of the Base class
 Base = declarative_base()
 
+
 class State(Base):
     """
     State class that inherits from Base.
     Represents a state in the states table in MySQL.
     """
     __tablename__ = 'states'
-    
+
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
+
 
 if __name__ == "__main__":
     # Create the engine and connect to the MySQL server
@@ -26,7 +28,6 @@ if __name__ == "__main__":
         'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3]),
         pool_pre_ping=True
     )
-    
+
     # Create all tables in the engine
     Base.metadata.create_all(engine)
-
