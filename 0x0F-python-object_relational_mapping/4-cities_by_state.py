@@ -18,8 +18,8 @@ if __name__ == "__main__":
     cursor = db.cursor()
     cursor.execute(query)
 
-    for state in cursor.fetchall():
-        print(city)
+    for row in cursor.fetchall():
+        print(row)
 
     cursor.close()
     db.close()
