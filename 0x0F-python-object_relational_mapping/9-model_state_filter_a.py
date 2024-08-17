@@ -19,8 +19,7 @@ if __name__ == "__main__":
     database_name = sys.argv[3]
 
     engine = create_engine(
-        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/"
-        f"{database_name}",
+        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/{database_name}",
         pool_pre_ping=True
     )
 
@@ -32,5 +31,8 @@ if __name__ == "__main__":
     states = session.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
     
     # Print each state in the required format
-    for state in
+    for state in states:
+        print(f"{state.id}: {state.name}")
+
+    session.close()
 
