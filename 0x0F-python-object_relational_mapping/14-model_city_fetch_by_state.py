@@ -1,35 +1,38 @@
 #!/usr/bin/python3
 """
-Script to create a State and a City in the hbtn_0e_100_usa database.
+Fetches and prints all City objects from the database hbtn_0e_14_usa.
+Results are sorted by city.id in ascending order and printed as:
+<state name>: (<city id>) <city name>
 """
+
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from relationship_state import Base, State
-from relationship_city import City
+from model_state import Base, State
+from model_city import City
 
-if __name__ == "__main__":
+def main():
     if len(sys.argv) != 4:
-        print("Usage: ./100-relationship_states_cities.py <mysql username> <mysql password> <database name>")
+        print("Usage: ./14-model_city_fetch_by_state.py <mysql username> <mysql password> <database name>")
         sys.exit(1)
 
-    username, password, dbname = sys.argv[1], sys.argv[2], sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
-    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost/{dbname}', pool_pre_ping=True)
+    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost/{database}', pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Create a new State
-    california = State(name="California")
-    # Create a new City associated with the State
-    san_francisco = City(name="San Francisco", state=california)
+    results = session.query(City, State).join(State).order_by(City.id).all()
 
-    # Add and commit the new state and city to the database
-    session.add(california)
-    session.add(san_francisco)
-    session.commit()
+    for city, state in results:
+        print(f"{state.name}: ({city.id}) {city.name}")
 
     session.close()
+
+if __name__ == "__main__":
+    main()
 

@@ -1,25 +1,24 @@
 #!/usr/bin/python3
 """
-Defines the City class for SQLAlchemy ORM
+Module to define the City class for SQLAlchemy ORM.
+
+The City class represents the 'cities' table in the database and has
+a relationship with the 'states' table.
 """
 
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from model_state import Base, State
+from model_state import Base
 
 class City(Base):
     """
-    Represents the cities table in the database.
+    Represents a city in the 'cities' table.
     """
     __tablename__ = 'cities'
-    
+
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
-    
-    # Establish relationship with the State class
-    state = relationship("State", back_populates="cities")
 
-# Ensure `Base` has a `cities` attribute
-State.cities = relationship("City", back_populates="state")
+    state = relationship('State')
 
