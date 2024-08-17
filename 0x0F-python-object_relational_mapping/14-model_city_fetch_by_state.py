@@ -1,24 +1,35 @@
 #!/usr/bin/python3
 """
-Module to define the City class for SQLAlchemy ORM.
-
-The City class represents the 'cities' table in the database and has
-a relationship with the 'states' table.
+Script to create a State and a City in the hbtn_0e_100_usa database.
 """
+import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from relationship_state import Base, State
+from relationship_city import City
 
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
-from model_state import Base
+if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        print("Usage: ./100-relationship_states_cities.py <mysql username> <mysql password> <database name>")
+        sys.exit(1)
 
-class City(Base):
-    """
-    Represents a city in the 'cities' table.
-    """
-    __tablename__ = 'cities'
+    username, password, dbname = sys.argv[1], sys.argv[2], sys.argv[3]
 
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
+    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost/{dbname}', pool_pre_ping=True)
+    Base.metadata.create_all(engine)
 
-    state = relationship('State')
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    # Create a new State
+    california = State(name="California")
+    # Create a new City associated with the State
+    san_francisco = City(name="San Francisco", state=california)
+
+    # Add and commit the new state and city to the database
+    session.add(california)
+    session.add(san_francisco)
+    session.commit()
+
+    session.close()
 
