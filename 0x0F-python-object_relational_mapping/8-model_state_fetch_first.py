@@ -10,7 +10,8 @@ from sqlalchemy.orm import sessionmaker
 if __name__ == "__main__":
     # Ensure there are exactly 3 arguments (excluding the script name)
     if len(sys.argv) != 4:
-        print("Usage: ./8-model_state_fetch_first.py <mysql username> <mysql password> <database name>")
+        print("Usage: ./8-model_state_fetch_first.py <mysql username> "
+              "<mysql password> <database name>")
         sys.exit(1)
 
     # Get the MySQL username, password, and database name from the arguments
@@ -20,7 +21,8 @@ if __name__ == "__main__":
 
     # Create an engine that connects to the MySQL database
     engine = create_engine(
-        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/{database_name}",
+        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost"
+        f"/{database_name}",
         pool_pre_ping=True
     )
 
@@ -41,4 +43,3 @@ if __name__ == "__main__":
 
     # Close the session
     session.close()
-
