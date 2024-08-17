@@ -27,7 +27,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query to fetch all cities with their corresponding states
+    # Query to fetch all cities and their corresponding states
     results = session.query(State, City).join(City).order_by(City.id).all()
 
     # Print results in the required format
