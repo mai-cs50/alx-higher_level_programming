@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker
 if __name__ == "__main__":
     # Create the engine and connect to the database
     engine = create_engine(f'mysql+mysqldb://{sys.argv[1]}
-                           {sys.argv[2]}@localhost/{sys.argv[3]}',
+                           :{sys.argv[2]}@localhost/{sys.argv[3]}',
                            pool_pre_ping=True)
     
     # Create the tables if they don't exist
