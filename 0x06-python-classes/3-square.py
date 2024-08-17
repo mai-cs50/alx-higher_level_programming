@@ -1,5 +1,13 @@
 #!/usr/bin/python3
+'''
+defines a square by: (based on 2-square.py)
+'''
+
+
 class Square:
+    '''
+    init
+    '''
     def __init__(self, int):
         if not isinstance(size, int):
             raise TypeError('size must be an integer')
