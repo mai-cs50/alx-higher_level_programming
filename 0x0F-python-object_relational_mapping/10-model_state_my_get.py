@@ -20,23 +20,25 @@ def main():
 
     # Create the engine and session
     engine = create_engine(
-        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/{database_name}",
+        f"mysql+mysqldb://{mysql_username}:{mysql_password}"
+        f"@localhost/{database_name}",
         pool_pre_ping=True
     )
-    
+
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
     # Query state by name
     state = session.query(State).filter(State.name == state_name).first()
-    
+
     if state:
         print(state.id)
     else:
         print("Not found")
 
     session.close()
+
 
 if __name__ == "__main__":
     main()
