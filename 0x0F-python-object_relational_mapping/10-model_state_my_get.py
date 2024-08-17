@@ -1,26 +1,39 @@
 #!/usr/bin/python3
-'''
-write a script that takes in arguments and displays all values
-in the states table of hbtn_0e_0_usa where name matches the argument.
-But this time, write one that is safe from MySQL injections!
-'''
-
+"""
+Script that prints the State object with the name passed as an argument
+from the database hbtn_0e_6_usa.
+"""
 import sys
 from model_state import Base, State
-from SQLAlchemy import creat_engine
-from SQLAlchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    engine = creat_engine('mysql+mysqldb://{}:{}@localhost/{}'
-                          .format(argv[1], argv[2], argv[3]),
-                          pool_pre_ping=True)
+    if len(sys.argv) != 4:
+        print("Usage: ./10-model_state_my_get.py <mysql username> "
+              "<mysql password> <database name> <state name>")
+        sys.exit(1)
+
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
+    state_name = sys.argv[4]
+
+    engine = create_engine(
+        f"mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/"
+        f"{database_name}",
+        pool_pre_ping=True
+    )
+
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State)./
-    filter(State.name == argv[4]).order_by(State.id).all()
-    if states:
-        print("{}".format(states[0].id))
+
+    # Query state by name, safely using parameters
+    state = session.query(State).filter(State.name == state_name).first()
+    
+    if state:
+        print(state.id)
     else:
-        print("Not found")
-    session.close()
+        print("Not fo
+
